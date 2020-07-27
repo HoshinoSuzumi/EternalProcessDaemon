@@ -44,6 +44,7 @@
 
     #actions {
         display: flex;
+        height: 100%;
     }
 
     #actions .action {
@@ -55,15 +56,16 @@
         height: 30px;
         background-color: #474747;
         color: #ffffff;
+        transition: .3s ease;
     }
 
     #actions .action:hover {
         background-color: #ffffff;
     }
 
-    /*#actions .action.close:hover {*/
-    /*    background-color: #ff2400;*/
-    /*}*/
+    #actions .action.close:hover {
+        background-color: #ff2400;
+    }
 
     #logo {
         height: 90%;
