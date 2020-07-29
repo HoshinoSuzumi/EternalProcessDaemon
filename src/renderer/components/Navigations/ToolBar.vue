@@ -4,7 +4,7 @@
       <img id="logo" src="~@/assets/logo.png" alt="Eternal logo">
       <div id="title">{{ toolbarConfig.title }}</div>
       <div id="actions">
-        <button @click="windowMinus" class="action">
+        <button @click="windowMinimize" class="action">
           <i class="iconfont" :class="toolbarConfig.btnIcon_minus"></i>
         </button>
         <button @click="windowClose" class="action close">
@@ -33,11 +33,11 @@ export default {
     }
   },
   methods: {
-    windowMinus() {
-      ipc.send('min');
+    windowMinimize() {
+      ipc.send('window-minimize');
     },
     windowClose() {
-      ipc.send('close');
+      ipc.send('window-close');
     }
   }
 }

@@ -77,15 +77,15 @@ app.on('activate', () => {
     }
 })
 
-ipcMain.on('min', e => mainWindow.minimize());
-ipcMain.on('max', e => {
+ipcMain.on('window-minimize', e => mainWindow.minimize());
+ipcMain.on('window-maximize', e => {
     if (mainWindow.isMaximized()) {
         mainWindow.unmaximize()
     } else {
         mainWindow.maximize()
     }
 });
-ipcMain.on('close', e => mainWindow.close());
+ipcMain.on('window-close', e => mainWindow.close());
 
 /**
  * Auto Updater
