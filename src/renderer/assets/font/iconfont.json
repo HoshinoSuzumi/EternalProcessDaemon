@@ -1,0 +1,23 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "949538",
+      "name": "aui-icon-close",
+      "font_class": "aui-icon-close",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "949589",
+      "name": "aui-icon-minus",
+      "font_class": "aui-icon-minus",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    }
+  ]
+}

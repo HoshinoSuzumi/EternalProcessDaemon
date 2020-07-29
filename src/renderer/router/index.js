@@ -6,13 +6,28 @@ Vue.use(Router)
 export default new Router({
     routes: [
         {
-            path: '/',
-            name: 'HomePage',
-            component: require('@/components/HomePage').default
+            path: '/monitor-list',
+            name: 'MonitorList',
+            component: require('@/components/Pages/MonitorList').default
+        },
+        {
+            path: '/logs',
+            name: 'ReviveLogs',
+            component: require('@/components/Pages/ReviveLogs').default
+        },
+        {
+            path: '/settings',
+            name: 'SettingsPage',
+            component: require('@/components/Pages/SettingsPage').default
+        },
+        {
+            path: '/monitor-new',
+            name: 'NewMonitor',
+            component: require('@/components/Pages/NewMonitor').default
         },
         {
             path: '*',
-            redirect: '/'
+            redirect: '/monitor-list'
         }
     ]
 })
