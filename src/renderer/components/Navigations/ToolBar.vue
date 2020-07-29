@@ -2,10 +2,14 @@
   <div id="toolbar">
     <div id="bar">
       <img id="logo" src="~@/assets/logo.png" alt="Eternal logo">
-      <div id="title">Eternal Proc-daemon</div>
+      <div id="title">{{ toolbarConfig.title }}</div>
       <div id="actions">
-        <button class="action"><i class="iconfont icon-minus"></i></button>
-        <button class="action close"><i class="iconfont icon-close1"></i></button>
+        <button @click="windowMinus" class="action">
+          <i class="iconfont" :class="toolbarConfig.btnIcon_minus"></i>
+        </button>
+        <button @click="windowClose" class="action close">
+          <i class="iconfont" :class="toolbarConfig.btnIcon_close"></i>
+        </button>
       </div>
     </div>
     <div id="content">
@@ -15,8 +19,27 @@
 </template>
 
 <script>
+const {ipcRenderer: ipc} = require('electron');
+
 export default {
-  name: "ToolBar"
+  name: "ToolBar",
+  data() {
+    return {
+      toolbarConfig: {
+        title: 'Eternal Proc-daemon',
+        btnIcon_minus: 'icon-minus',
+        btnIcon_close: 'icon-close1'
+      }
+    }
+  },
+  methods: {
+    windowMinus() {
+      ipc.send('min');
+    },
+    windowClose() {
+      ipc.send('close');
+    }
+  }
 }
 </script>
 

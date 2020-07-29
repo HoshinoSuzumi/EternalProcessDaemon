@@ -1,11 +1,8 @@
-import {app, BrowserWindow, Menu} from 'electron'
+import {app, BrowserWindow, ipcMain, Menu} from 'electron'
 
 let template = [
     {
-        label: '菜单1'
-    },
-    {
-        label: '菜单2',
+        label: '菜单',
         submenu: [{
             label: '最小化',
             accelerator: 'CmdOrCtrl+M',
@@ -26,9 +23,6 @@ let template = [
             }
         }]
     },
-    {
-        label: '菜单3'
-    }
 ]
 
 /**
@@ -82,6 +76,16 @@ app.on('activate', () => {
         createWindow()
     }
 })
+
+ipcMain.on('min', e => mainWindow.minimize());
+ipcMain.on('max', e => {
+    if (mainWindow.isMaximized()) {
+        mainWindow.unmaximize()
+    } else {
+        mainWindow.maximize()
+    }
+});
+ipcMain.on('close', e => mainWindow.close());
 
 /**
  * Auto Updater
