@@ -98,7 +98,7 @@ export default {
 }
 
 #actions .action.close:hover {
-  background-color: #ff2400;
+  background-color: #d71526;
 }
 
 #logo {
