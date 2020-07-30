@@ -1,4 +1,5 @@
-import {app, BrowserWindow, ipcMain, Menu} from 'electron'
+import {app, BrowserWindow, ipcMain, Menu, Tray} from 'electron'
+import path from 'path'
 
 let ApplicationMenuConf = [
     {
@@ -33,7 +34,7 @@ if (process.env.NODE_ENV !== 'development') {
     global.__static = require('path').join(__dirname, '/static').replace(/\\/g, '\\\\')
 }
 
-let mainWindow
+let mainWindow, tray
 const winURL = process.env.NODE_ENV === 'development'
     ? `http://localhost:9080`
     : `file://${__dirname}/index.html`
@@ -57,9 +58,15 @@ function createWindow() {
     })
 
     mainWindow.loadURL(winURL)
+    global.mainId = mainWindow.id;
 
     mainWindow.on('ready-to-show', () => {
-        mainWindow.show()
+        mainWindow.show();
+    });
+    mainWindow.on('close', event => {
+        mainWindow.hide();
+        mainWindow.setSkipTaskbar(true);
+        event.preventDefault();
     });
     mainWindow.on('closed', () => {
         mainWindow = null
@@ -73,9 +80,31 @@ function createWindow() {
 
     let menu = Menu.buildFromTemplate(ApplicationMenuConf)
     Menu.setApplicationMenu(menu)
+
+    tray = new Tray(path.join(__static, 'icon.ico'))
+    const contextMenu = Menu.buildFromTemplate([
+        {
+            label: '退出', click: () => {
+                mainWindow.destroy();
+                app.quit();
+            }
+        },
+    ])
+    tray.setToolTip('EPD')
+    tray.setContextMenu(contextMenu)
+    tray.on('double-click', () => {
+        if (!mainWindow.isVisible()) {
+            mainWindow.show();
+            mainWindow.setSkipTaskbar(false);
+        } else {
+            if (mainWindow.isMinimized()) mainWindow.restore();
+        }
+    })
 }
 
-app.on('ready', createWindow)
+app.on('ready', () => {
+    createWindow();
+})
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
