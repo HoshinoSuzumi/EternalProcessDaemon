@@ -1,6 +1,6 @@
 <template>
   <div id="toolbar">
-    <div id="bar">
+    <div id="bar" :class="{'defocus': toolbarConfig.inFocus}">
       <img id="logo" src="~@/assets/logo.png" alt="Eternal logo">
       <div id="title">{{ toolbarConfig.title }}</div>
       <div id="actions">
@@ -28,9 +28,15 @@ export default {
       toolbarConfig: {
         title: 'Eternal Proc-daemon',
         btnIcon_minus: 'icon-minus',
-        btnIcon_close: 'icon-close1'
+        btnIcon_close: 'icon-close1',
+        inFocus: true
       }
     }
+  },
+  mounted() {
+    ipc.on('window-focus', (e, msg) => {
+      this.toolbarConfig.inFocus = msg;
+    });
   },
   methods: {
     windowMinimize() {
@@ -57,6 +63,10 @@ export default {
   background-color: #323233;
   color: #ffffff;
   padding-left: 5px;
+}
+
+#bar.defocus {
+  background-color: #3C3C3C;
 }
 
 #title {

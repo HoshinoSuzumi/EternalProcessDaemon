@@ -1,6 +1,6 @@
 import {app, BrowserWindow, ipcMain, Menu} from 'electron'
 
-let template = [
+let ApplicationMenuConf = [
     {
         label: '菜单',
         submenu: [{
@@ -43,8 +43,10 @@ function createWindow() {
      * Initial window options
      */
     mainWindow = new BrowserWindow({
+        show: false,
         height: 600,
         width: 1000,
+        backgroundColor: '#333333',
         useContentSize: true,
         resizable: false,
         center: true,
@@ -56,10 +58,20 @@ function createWindow() {
 
     mainWindow.loadURL(winURL)
 
+    mainWindow.on('ready-to-show', () => {
+        mainWindow.show()
+    });
     mainWindow.on('closed', () => {
         mainWindow = null
     })
-    let menu = Menu.buildFromTemplate(template)
+    mainWindow.on('blur', () => {
+        mainWindow.webContents.send('window-focus', false);
+    });
+    mainWindow.on('focus', () => {
+        mainWindow.webContents.send('window-focus', true);
+    });
+
+    let menu = Menu.buildFromTemplate(ApplicationMenuConf)
     Menu.setApplicationMenu(menu)
 }
 
@@ -77,8 +89,8 @@ app.on('activate', () => {
     }
 })
 
-ipcMain.on('window-minimize', e => mainWindow.minimize());
-ipcMain.on('window-maximize', e => {
+ipcMain.on('window-minimize', () => mainWindow.minimize());
+ipcMain.on('window-maximize', () => {
     if (mainWindow.isMaximized()) {
         mainWindow.unmaximize()
     } else {
