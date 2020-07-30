@@ -5,8 +5,9 @@
 ![License](https://img.shields.io/github/license/boxlab/EternalProcessDaemon?style=flat-square)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/boxlab/EternalProcessDaemon?style=flat-square)
 
-> :construction: W.I.P. :construction:
-> 拯救进程于崩溃边缘！
+> :construction: 开发中 :construction:
+>
+> 拯救进程于崩溃边缘！:rocket:
 
 ## 开始
 
