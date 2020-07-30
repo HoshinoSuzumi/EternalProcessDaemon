@@ -1,6 +1,8 @@
 import {app, BrowserWindow, ipcMain, Menu, Tray} from 'electron'
 import path from 'path'
 
+process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
+
 let ApplicationMenuConf = [
     {
         label: '菜单',
@@ -54,7 +56,9 @@ function createWindow() {
         titleBarStyle: 'hidden',
         frame: false,
         transparent: true,
-        nodeIntegration: true,
+        webPreferences: {
+            nodeIntegration: true
+        }
     })
 
     mainWindow.loadURL(winURL)
