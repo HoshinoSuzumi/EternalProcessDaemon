@@ -5,8 +5,9 @@ English | [简体中文](README_zh.md)
 ![License](https://img.shields.io/github/license/boxlab/EternalProcessDaemon?style=flat-square)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/boxlab/EternalProcessDaemon?style=flat-square)
 
-> :construction: W.I.P. :construction:
-> Automatically revives when the processes crash down.
+> :construction: Work in progress :construction:
+>
+> Automatically revives when the processes crash down :rocket:.
 
 ## Get started
 
