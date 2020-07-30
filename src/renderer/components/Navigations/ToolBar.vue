@@ -76,6 +76,7 @@ export default {
   width: 100%;
   text-align: center;
   font-family: 'Source Code Pro', sans-serif;
+  font-size: 14px;
 }
 
 #actions {

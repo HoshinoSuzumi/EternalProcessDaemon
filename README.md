@@ -1,22 +1,23 @@
-# eternal-process-daemon
+English | [简体中文](README_zh.md)
 
+# Eternal Process Daemon
+
+![License](https://img.shields.io/github/license/boxlab/EternalProcessDaemon?style=flat-square)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/boxlab/EternalProcessDaemon?style=flat-square)
+
+> :construction: W.I.P. :construction:
 > Automatically revives when the processes crash down.
 
-#### Build Setup
+## Get started
 
-``` bash
-# install dependencies
-npm install
+### For users
 
-# serve with hot reload at localhost:9080
-npm run dev
+Currently under development, please wait for the first release.
 
-# build electron application for production
-npm run build
+You can check the development progress at [milestone](https://github.com/boxlab/EternalProcessDaemon/milestones).
 
+### [Contribution](CONTRIBUTION.md)
 
-```
+**All kinds of contributions are welcomed.**
 
----
-
-This project was generated with [electron-vue](https://github.com/SimulatedGREG/electron-vue) using [vue-cli](https://github.com/vuejs/vue-cli). Documentation about the original structure can be found [here](https://simulatedgreg.gitbooks.io/electron-vue/content/index.html).
+If you have any questions, feel free to file an issue.
