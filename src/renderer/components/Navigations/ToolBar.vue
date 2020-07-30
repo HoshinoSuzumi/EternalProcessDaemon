@@ -1,6 +1,6 @@
 <template>
   <div id="toolbar">
-    <div id="bar" :class="{'defocus': toolbarConfig.inFocus}">
+    <div id="bar" :class="{'defocus': !toolbarConfig.inFocus}">
       <img id="logo" src="~@/assets/logo.png" alt="Eternal logo">
       <div id="title">{{ toolbarConfig.title }}</div>
       <div id="actions">
@@ -60,20 +60,22 @@ export default {
   align-items: center;
   justify-content: space-between;
   height: 30px;
-  background-color: #323233;
-  color: #ffffff;
+  background-color: #3c3c3c;
+  color: #cccccc;
   padding-left: 5px;
+  transition: .1s ease;
 }
 
 #bar.defocus {
-  background-color: #3C3C3C;
+  background-color: #323233;
+  color: #979797;
 }
 
 #title {
+  -webkit-app-region: drag;
   width: 100%;
   text-align: center;
   font-family: 'Source Code Pro', sans-serif;
-  -webkit-app-region: drag;
 }
 
 #actions {
@@ -89,7 +91,7 @@ export default {
   width: 45px;
   height: 30px;
   background-color: rgba(0, 0, 0, 0);
-  color: #ffffff;
+  color: inherit;
   transition: 0s;
 }
 
@@ -102,8 +104,8 @@ export default {
 }
 
 #logo {
-  height: 90%;
   -webkit-app-region: drag;
+  height: 90%;
 }
 
 #content {
