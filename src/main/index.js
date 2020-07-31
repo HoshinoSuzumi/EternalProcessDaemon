@@ -1,4 +1,4 @@
-import {app, BrowserWindow, ipcMain, Menu, Tray} from 'electron'
+import {app, BrowserWindow, dialog, ipcMain, Menu, Tray} from 'electron'
 import path from 'path'
 
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
@@ -28,10 +28,6 @@ let ApplicationMenuConf = [
     },
 ]
 
-/**
- * Set `__static` path to static files in production
- * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-static-assets.html
- */
 if (process.env.NODE_ENV !== 'development') {
     global.__static = require('path').join(__dirname, '/static').replace(/\\/g, '\\\\')
 }
@@ -42,9 +38,6 @@ const winURL = process.env.NODE_ENV === 'development'
     : `file://${__dirname}/index.html`
 
 function createWindow() {
-    /**
-     * Initial window options
-     */
     mainWindow = new BrowserWindow({
         show: false,
         height: 600,
@@ -62,7 +55,6 @@ function createWindow() {
     })
 
     mainWindow.loadURL(winURL)
-    global.mainId = mainWindow.id;
 
     mainWindow.on('ready-to-show', () => {
         mainWindow.show();
@@ -88,9 +80,34 @@ function createWindow() {
     tray = new Tray(path.join(__static, 'icon.ico'))
     const contextMenu = Menu.buildFromTemplate([
         {
-            label: '退出', click: () => {
-                mainWindow.destroy();
-                app.quit();
+            label: '显示窗口',
+            click: () => {
+                mainWindow.show();
+                mainWindow.restore();
+            }
+        },
+        {
+            type: 'separator'
+        },
+        {
+            label: '退出',
+            click: () => {
+                mainWindow.show();
+                mainWindow.restore();
+                dialog.showMessageBox(mainWindow, {
+                    type: 'question',
+                    title: '退出程序',
+                    message: '确定要退出永恒的进程守护吗？',
+                    detail: '这将使您列表中的进程不再受到监控和保护，其异常停止后将不会被自动启动。',
+                    buttons: ['取消', '退出'],
+                    defaultId: 1,
+                    noLink: true,
+                }).then(r => {
+                    if (r.response === 1) {
+                        mainWindow.destroy();
+                        app.quit();
+                    }
+                });
             }
         },
     ])
