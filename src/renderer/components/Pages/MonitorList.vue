@@ -1,12 +1,17 @@
 <template>
   <div>
-    <h1>监视器列表</h1>
+    <ContentBlock title="守护列表" blank>
+      balabala...
+    </ContentBlock>
   </div>
 </template>
 
 <script>
+import ContentBlock from "../ContentBlock";
+
 export default {
-  name: "MonitorList"
+  name: "MonitorList",
+  components: {ContentBlock}
 }
 </script>
 

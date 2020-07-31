@@ -1,12 +1,26 @@
 <template>
   <div>
-    <h1>设置</h1>
+    <ContentBlock title="软件设置">
+      Content block
+    </ContentBlock>
+    <ContentBlock title="守护设置">
+      Content block
+    </ContentBlock>
+    <ContentBlock title="关于">
+      Content block
+    </ContentBlock>
+    <ContentBlock>
+      Content block [with no title]
+    </ContentBlock>
   </div>
 </template>
 
 <script>
+import ContentBlock from "../ContentBlock";
+
 export default {
-  name: "SettingsPage"
+  name: "SettingsPage",
+  components: {ContentBlock}
 }
 </script>
 

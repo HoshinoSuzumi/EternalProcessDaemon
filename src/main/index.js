@@ -62,6 +62,29 @@ function createWindow() {
             type: 'separator'
         },
         {
+            type: 'checkbox',
+            label: '开机启动',
+            checked: app.getLoginItemSettings().openAtLogin,
+            click: () => {
+                if (!app.isPackaged) {
+                    app.setLoginItemSettings({
+                        openAtLogin: !app.getLoginItemSettings().openAtLogin,
+                        path: process.execPath,
+                        args: [
+                            '--processStart', `"${process.execPath}"`,
+                        ]
+                    })
+                } else {
+                    app.setLoginItemSettings({
+                        openAtLogin: !app.getLoginItemSettings().openAtLogin
+                    })
+                }
+            }
+        },
+        {
+            type: 'separator'
+        },
+        {
             label: '退出程序',
             click: () => {
                 mainWindow.show();
@@ -94,15 +117,6 @@ function createWindow() {
         }
     })
 }
-
-app.setLoginItemSettings({
-    openAtLogin: false,
-    openAsHidden: false,
-    path: process.execPath,
-    args: [
-        '--processStart', `"${process.execPath}"`,
-    ]
-});
 
 app.on('ready', () => {
     createWindow();

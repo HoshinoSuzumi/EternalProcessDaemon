@@ -70,6 +70,26 @@ export default {
   width: 100%;
   height: 100%;
   color: #ffffff;
-  padding: 10px
+  padding: 10px;
+  overflow-y: scroll;
+}
+
+#content::-webkit-scrollbar {
+  position: fixed;
+  width: 10px;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+#content::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+#content::-webkit-scrollbar-thumb {
+  background-color: #424242;
+  transition: 1s ease-out;
+}
+
+#content::-webkit-scrollbar-thumb:hover {
+  background-color: #4f4f4f;
 }
 </style>

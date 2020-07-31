@@ -55,6 +55,7 @@ export default {
 }
 
 #bar {
+  -webkit-app-region: drag;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -72,7 +73,6 @@ export default {
 }
 
 #title {
-  -webkit-app-region: drag;
   width: 100%;
   text-align: center;
   font-family: 'Source Code Pro', sans-serif;
@@ -80,6 +80,7 @@ export default {
 }
 
 #actions {
+  -webkit-app-region: no-drag;
   display: flex;
   height: 100%;
 }
@@ -105,7 +106,6 @@ export default {
 }
 
 #logo {
-  -webkit-app-region: drag;
   height: 90%;
 }
 
