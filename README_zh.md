@@ -11,6 +11,12 @@
 
 这是一个 Windows 平台的进程监控和守护程序，当监控列表中的进程崩溃或非正常退出时，EDP 会自动拉起目标进程。
 
+## 快速链接
+
+- 里程碑: [milestones](https://github.com/boxlab/EternalProcessDaemon/milestones)
+- Projects: [projects](https://github.com/boxlab/EternalProcessDaemon/projects)
+- 贡献: [CONTRIBUTION.md](CONTRIBUTION.md)
+
 ## 开始
 
 ### 使用
