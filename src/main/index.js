@@ -3,31 +3,6 @@ import path from 'path'
 
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
 
-let ApplicationMenuConf = [
-    {
-        label: '菜单',
-        submenu: [{
-            label: '最小化',
-            accelerator: 'CmdOrCtrl+M',
-            role: 'minimize'
-        }, {
-            label: '关闭',
-            accelerator: 'CmdOrCtrl+W',
-            role: 'close'
-        }, {
-            type: 'separator'
-        }, {
-            label: '重新打开窗口',
-            accelerator: 'CmdOrCtrl+Shift+T',
-            enabled: false,
-            key: 'reopenMenuItem',
-            click: function () {
-                app.emit('activate')
-            }
-        }]
-    },
-]
-
 if (process.env.NODE_ENV !== 'development') {
     global.__static = require('path').join(__dirname, '/static').replace(/\\/g, '\\\\')
 }
@@ -74,11 +49,8 @@ function createWindow() {
         mainWindow.webContents.send('window-focus', true);
     });
 
-    let menu = Menu.buildFromTemplate(ApplicationMenuConf)
-    Menu.setApplicationMenu(menu)
-
     tray = new Tray(path.join(__static, 'icon.ico'))
-    const contextMenu = Menu.buildFromTemplate([
+    const trayContextMenu = Menu.buildFromTemplate([
         {
             label: '显示窗口',
             click: () => {
@@ -90,7 +62,7 @@ function createWindow() {
             type: 'separator'
         },
         {
-            label: '退出',
+            label: '退出程序',
             click: () => {
                 mainWindow.show();
                 mainWindow.restore();
@@ -111,8 +83,8 @@ function createWindow() {
             }
         },
     ])
-    tray.setToolTip('EPD')
-    tray.setContextMenu(contextMenu)
+    tray.setToolTip('永恒进程守护')
+    tray.setContextMenu(trayContextMenu)
     tray.on('double-click', () => {
         if (!mainWindow.isVisible()) {
             mainWindow.show();
@@ -147,13 +119,7 @@ app.on('activate', () => {
 });
 
 ipcMain.on('window-minimize', () => mainWindow.minimize());
-ipcMain.on('window-maximize', () => {
-    if (mainWindow.isMaximized()) {
-        mainWindow.unmaximize()
-    } else {
-        mainWindow.maximize()
-    }
-});
+ipcMain.on('window-restore', () => mainWindow.restore());
 ipcMain.on('window-close', e => mainWindow.close());
 
 /**
