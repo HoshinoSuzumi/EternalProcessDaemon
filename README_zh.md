@@ -9,6 +9,8 @@
 >
 > 拯救进程于崩溃边缘！:rocket:
 
+这是一个 Windows 平台的进程监控和守护程序，当监控列表中的进程崩溃或非正常退出时，EDP 会自动拉起目标进程。
+
 ## 开始
 
 ### 使用
@@ -22,3 +24,24 @@
 **我们欢迎任何形式的贡献**
 
 如果你遇到问题或有任何疑问，请随时提交 Issue
+
+## 开发信息
+
+### 平台支持
+
+**已计划:**
+
+- Windows
+
+**未计划:**
+
+- MacOS
+- Linux
+
+### 待办事项
+
+请查看 [projects](https://github.com/boxlab/EternalProcessDaemon/projects).
+
+### 变更日志
+
+暂无.

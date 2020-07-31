@@ -7,7 +7,9 @@ English | [简体中文](README_zh.md)
 
 > :construction: Work in progress :construction:
 >
-> Automatically revives when the processes crash down :rocket:.
+> Revive processes from edge of crash! :rocket:
+
+This is a process monitoring and daemons app for Windows. When the process in the monitoring list crashes or exits abnormally, EDP will automatically pull up the target process.
 
 ## Get started
 
@@ -22,3 +24,24 @@ You can check the development progress at [milestone](https://github.com/boxlab/
 **All kinds of contributions are welcomed.**
 
 If you have any questions, feel free to file an issue.
+
+## Development
+
+### Platforms
+
+**Planned:**
+
+- Windows
+
+**Unplanned:**
+
+- MacOS
+- Linux
+
+### To-Do
+
+Check at [projects](https://github.com/boxlab/EternalProcessDaemon/projects).
+
+### Change logs
+
+Not yet.
