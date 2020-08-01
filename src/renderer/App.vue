@@ -2,7 +2,10 @@
   <div id="app">
     <ToolBar>
       <DrawerBar>
-        <router-view/>
+        <!--        <router-view/>-->
+        <transition name="page" mode="out-in">
+          <router-view></router-view>
+        </transition>
       </DrawerBar>
     </ToolBar>
   </div>
@@ -26,6 +29,21 @@ export default {
 </script>
 
 <style>
+.page-enter-active, .page-leave-active {
+  transition: all .2s
+}
+
+.page-enter, .page-leave-to {
+  -webkit-transform: translateY(1.25rem);
+  transform: translateY(1.25rem);
+  opacity: 0
+}
+
+.page-enter-to .page-leave {
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+  opacity: 1
+}
 
 * {
   box-sizing: border-box;
