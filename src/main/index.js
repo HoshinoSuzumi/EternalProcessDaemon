@@ -1,6 +1,16 @@
 import {app, BrowserWindow, dialog, ipcMain, Menu, Tray} from 'electron'
 import path from 'path'
 
+// let child = monitor.start(["TakeColor.exe"], {
+//     max: 1,
+//     silent: false,
+//     cwd: 'G:\\软件'
+// });
+//
+// child.on('exit:code', function (code) {
+//     console.error('Forever detected script exited with code ' + code);
+// });
+
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
 
 if (process.env.NODE_ENV !== 'development') {
