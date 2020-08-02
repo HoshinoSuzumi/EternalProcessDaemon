@@ -4,7 +4,7 @@
       <SettingItem v-for="(item, k) in setting.items" :key="k"
                    @callback="item.callback" :tag="item.tag"
                    :regexp="item.regexp" :addon-verification="item.addonVerification"
-                   :title="item.title" :detail="item.detail" :type="item.type"/>
+                   :title="item.title" :detail="item.detail" :type="item.type" :default-val="item.defaultVal"/>
     </ContentBlock>
     <ContentBlock title="关于">
       Todo
@@ -30,6 +30,7 @@ export default {
               tag: 'openAtBoot',
               detail: '登录到系统时自动开启守护',
               type: 'checkbox',
+              defaultVal: true,
               callback: this.callbackHandler,
             },
             {
@@ -37,6 +38,7 @@ export default {
               tag: 'autoUpdate',
               detail: '软件启动时自动检查新版本，并自动下载安装',
               type: 'checkbox',
+              defaultVal: false,
               callback: this.callbackHandler,
             }
           ]
@@ -49,6 +51,7 @@ export default {
               tag: 'pullUpDelay',
               detail: '受监控进程异常停止后，重新拉起进程之前的延时(秒)',
               type: 'input',
+              defaultVal: 3,
               regexp: /^(0|[1-9][0-9]*)$/,
               addonVerification: (val) => {
                 val = Number.parseInt(val)
@@ -73,6 +76,7 @@ export default {
               tag: 'checkFreq',
               detail: '检查进程是否存活的时间间隔(秒)',
               type: 'input',
+              defaultVal: 60,
               callback: this.callbackHandler,
             }
           ]

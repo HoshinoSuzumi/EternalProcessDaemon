@@ -4,7 +4,7 @@
 
     <div v-if="type === 'checkbox'" class="checkbox">
       <label>
-        <input v-model="values.checkbox" :id="'checkbox-' + randomId" type="checkbox">
+        <input v-model="values.checked" :id="'checkbox-' + randomId" type="checkbox">
         <label :for="'checkbox-' + randomId">
           <i class="iconfont icon-check checkbox-icon"></i>
         </label>
@@ -34,6 +34,7 @@ export default {
     title: String,
     detail: String,
     type: String,
+    defaultVal: Boolean | String | Number,
     tag: String,
     regexp: RegExp,
     addonVerification: Function
@@ -42,18 +43,22 @@ export default {
     return {
       randomId: '',
       fallbackTip: null,
+      init: true,
       values: {
-        checkbox: null,
+        checked: null,
         input: {
           pass: true,
-          origin: null,
-          verified: null
+          origin: null
         },
       }
     }
   },
   mounted() {
     this.randomId = Math.random().toString(36).slice(-8);
+    if (this.defaultVal !== undefined) {
+      if (this.type === 'checkbox') this.values.checked = this.defaultVal
+      if (this.type === 'input') this.values.input.origin = this.defaultVal
+    }
   },
   watch: {
     'values': {
@@ -71,13 +76,16 @@ export default {
           addonPass = this.addonVerification ? this.addonVerification(inputVal).pass || false : true
           finalPass = regexPass && addonPass
           this.values.input.pass = finalPass
-          this.values.input.verified = finalPass ? inputVal : null
+          let verifiedValue = finalPass ? inputVal : null
           this.fallbackTip = this.addonVerification ? this.addonVerification(inputVal).tip || null : null
-          callback.value = this.values.input.verified
+          callback.value = verifiedValue
         } else if (this.type === 'checkbox') {
-          callback.value = val.checkbox
+          callback.value = val.checked
         }
-        if (callback.value !== null) this.$emit('callback', callback);
+        if (callback.value !== null && !this.init) {
+          this.$emit('callback', callback)
+        }
+        this.init = false;
       }
     }
   }
