@@ -8,7 +8,7 @@
           <p class="subtitle">{{ item.path }}</p>
         </div>
         <div class="item new" @click="$router.push('/monitor-new')">
-          +
+          <i class="iconfont icon-plus"></i>
           <div class="tip">新建守护</div>
         </div>
       </div>
@@ -116,6 +116,11 @@ export default {
   font-size: 50px;
   color: rgba(255, 255, 255, .6);
   transition: .3s ease;
+}
+
+.list .item.new i.iconfont {
+  font-size: 40px;
+  color: rgba(255, 255, 255, .6);
 }
 
 .list .item.new .tip {

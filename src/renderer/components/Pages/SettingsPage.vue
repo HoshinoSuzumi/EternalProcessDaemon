@@ -1,21 +1,13 @@
 <template>
   <div>
-    <ContentBlock title="软件设置">
-      <SettingItem title="开机自启动" detail="登录到系统时自动开启守护" type="checkbox"/>
-      <SettingItem title="自动更新" detail="软件启动时自动检查新版本，并自动下载安装" type="checkbox"/>
-    </ContentBlock>
-    <ContentBlock title="守护设置">
-      <SettingItem title="拉起进程延时" detail="受监控进程异常停止后，重新拉起进程之前的延时(秒)" type="input"/>
-      <SettingItem title="进程检查频率" detail="检查进程是否存活的时间间隔(秒)" type="input"/>
-    </ContentBlock>
-    <ContentBlock title="外观设置">
-      <SettingItem title="应用主题" detail="没有，也不会有，除非你PR" type="description"/>
+    <ContentBlock v-for="(setting, k) in Settings" :key="k" :title="setting.title">
+      <SettingItem v-for="(item, k) in setting.items" :key="k"
+                   @callback="item.callback" :tag="item.tag"
+                   :regexp="item.regexp" :addon-verification="item.addonVerification"
+                   :title="item.title" :detail="item.detail" :type="item.type"/>
     </ContentBlock>
     <ContentBlock title="关于">
-      Content block
-    </ContentBlock>
-    <ContentBlock>
-      Content block [with no title]
+      Todo
     </ContentBlock>
   </div>
 </template>
@@ -29,10 +21,70 @@ export default {
   components: {SettingItem, ContentBlock},
   data() {
     return {
-      buf: false,
+      Settings: [
+        {
+          title: '软件设置',
+          items: [
+            {
+              title: '开机自启动',
+              tag: 'openAtBoot',
+              detail: '登录到系统时自动开启守护',
+              type: 'checkbox',
+              callback: this.callbackHandler,
+            },
+            {
+              title: '自动更新',
+              tag: 'autoUpdate',
+              detail: '软件启动时自动检查新版本，并自动下载安装',
+              type: 'checkbox',
+              callback: this.callbackHandler,
+            }
+          ]
+        },
+        {
+          title: '守护设置',
+          items: [
+            {
+              title: '拉起进程延时',
+              tag: 'pullUpDelay',
+              detail: '受监控进程异常停止后，重新拉起进程之前的延时(秒)',
+              type: 'input',
+              regexp: /^(0|[1-9][0-9]*)$/,
+              addonVerification: (val) => {
+                val = Number.parseInt(val)
+                let res = {
+                  pass: true,
+                  tip: null
+                }
+                if (val > 60) {
+                  res.pass = false;
+                  res.tip = '值必须小于60'
+                }
+                if (val < 0) {
+                  res.pass = false;
+                  res.tip = '值必须大于0'
+                }
+                return res
+              },
+              callback: this.callbackHandler,
+            },
+            {
+              title: '进程检查频率',
+              tag: 'checkFreq',
+              detail: '检查进程是否存活的时间间隔(秒)',
+              type: 'input',
+              callback: this.callbackHandler,
+            }
+          ]
+        }
+      ]
     }
   },
-  methods: {}
+  methods: {
+    callbackHandler: (value) => {
+      console.log(value);
+    }
+  }
 }
 </script>
 

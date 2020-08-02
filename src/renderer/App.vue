@@ -2,7 +2,6 @@
   <div id="app">
     <ToolBar>
       <DrawerBar>
-        <!--        <router-view/>-->
         <transition name="page" mode="out-in">
           <router-view></router-view>
         </transition>
