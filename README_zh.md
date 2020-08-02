@@ -15,7 +15,7 @@
 
 - 里程碑: [milestones](https://github.com/boxlab/EternalProcessDaemon/milestones)
 - Projects: [projects](https://github.com/boxlab/EternalProcessDaemon/projects)
-- 贡献: [CONTRIBUTION.md](CONTRIBUTION.md)
+- 贡献: [CONTRIBUTION.md](CONTRIBUTING.md)
 
 ## 开始
 
@@ -25,7 +25,7 @@
 
 你可以在 [milestones](https://github.com/boxlab/EternalProcessDaemon/milestones) 查看开发进度
 
-### [贡献](CONTRIBUTION.md)
+### [贡献](CONTRIBUTING.md)
 
 **我们欢迎任何形式的贡献**
 

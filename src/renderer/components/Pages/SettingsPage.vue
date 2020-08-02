@@ -13,6 +13,7 @@
 </template>
 
 <script>
+const {app} = require('electron').remote
 import ContentBlock from "../ContentBlock";
 import SettingItem from "./SettingsPage/SettingItem";
 
@@ -30,7 +31,7 @@ export default {
               tag: 'openAtBoot',
               detail: '登录到系统时自动开启守护',
               type: 'checkbox',
-              defaultVal: true,
+              defaultVal: app.getLoginItemSettings().openAtLogin,
               callback: this.callbackHandler,
             },
             {
@@ -38,7 +39,7 @@ export default {
               tag: 'autoUpdate',
               detail: '软件启动时自动检查新版本，并自动下载安装',
               type: 'checkbox',
-              defaultVal: false,
+              defaultVal: true,
               callback: this.callbackHandler,
             }
           ]

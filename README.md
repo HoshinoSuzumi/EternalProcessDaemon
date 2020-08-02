@@ -15,7 +15,7 @@ This is a process monitoring and daemons app for Windows. When the process in th
 
 - Milestones: [milestones](https://github.com/boxlab/EternalProcessDaemon/milestones)
 - Projects: [projects](https://github.com/boxlab/EternalProcessDaemon/projects)
-- Contribution: [CONTRIBUTION.md](CONTRIBUTION.md)
+- Contribution: [CONTRIBUTION.md](CONTRIBUTING.md)
 
 ## Get started
 
@@ -25,7 +25,7 @@ Currently under development, please wait for the first release.
 
 You can check the development progress at [milestones](https://github.com/boxlab/EternalProcessDaemon/milestones).
 
-### [Contribution](CONTRIBUTION.md)
+### [Contribution](CONTRIBUTING.md)
 
 **All kinds of contributions are welcomed.**
 
