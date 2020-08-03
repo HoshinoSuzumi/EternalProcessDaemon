@@ -1,16 +1,6 @@
 import {app, BrowserWindow, dialog, ipcMain, Menu, Tray} from 'electron'
 import path from 'path'
 
-// let child = monitor.start(["TakeColor.exe"], {
-//     max: 1,
-//     silent: false,
-//     cwd: 'G:\\软件'
-// });
-//
-// child.on('exit:code', function (code) {
-//     console.error('Forever detected script exited with code ' + code);
-// });
-
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
 
 if (process.env.NODE_ENV !== 'development') {
@@ -66,29 +56,6 @@ function createWindow() {
             click: () => {
                 mainWindow.show();
                 mainWindow.restore();
-            }
-        },
-        {
-            type: 'separator'
-        },
-        {
-            type: 'checkbox',
-            label: '开机启动',
-            checked: app.getLoginItemSettings().openAtLogin,
-            click: () => {
-                if (!app.isPackaged) {
-                    app.setLoginItemSettings({
-                        openAtLogin: !app.getLoginItemSettings().openAtLogin,
-                        path: process.execPath,
-                        args: [
-                            '--processStart', `"${process.execPath}"`,
-                        ]
-                    })
-                } else {
-                    app.setLoginItemSettings({
-                        openAtLogin: !app.getLoginItemSettings().openAtLogin
-                    })
-                }
             }
         },
         {
