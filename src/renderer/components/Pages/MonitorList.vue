@@ -3,9 +3,12 @@
     <ContentBlock blank>
       <div class="list">
         <div class="item" v-for="(item, k) in datalist" :key="k">
-          <div class="pin" :class="item.status"></div>
-          <h1 class="title">{{ item.title }}</h1>
-          <p class="subtitle">{{ item.path }}</p>
+          <div class="info">
+            <div class="pin" :class="item.status"></div>
+            <h1 class="title">{{ item.title }}</h1>
+            <p class="path">{{ item.path }}</p>
+          </div>
+          <div class="action">ab</div>
         </div>
         <div class="item new" @click="$router.push('/monitor-new')">
           <i class="iconfont icon-plus"></i>
@@ -59,6 +62,7 @@ export default {
 }
 
 .list .item {
+  display: flex;
   position: relative;
   overflow: hidden;
   width: calc(100% / 2 - 10px);
@@ -75,13 +79,26 @@ export default {
   box-shadow: 0.5rem 0.875rem 2.375rem rgba(0, 0, 0, .48), 0.0625rem 0.1875rem 0.5rem rgba(0, 0, 0, .24);
 }
 
+.list .item .info {
+  display: flex;
+  flex: 3;
+  flex-direction: column;
+}
+
+.list .item .action {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+}
+
 .list .item h1.title {
   font-size: x-large;
   font-weight: bolder;
   color: inherit;
 }
 
-.list .item p.subtitle {
+.list .item p.path {
   font-size: small;
   font-weight: normal;
   color: inherit;

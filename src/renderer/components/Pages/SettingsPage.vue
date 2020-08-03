@@ -88,6 +88,21 @@ export default {
   methods: {
     callbackHandler: (value) => {
       console.log(value);
+      if (value.tag === 'openAtBoot') {
+        if (!app.isPackaged) {
+          app.setLoginItemSettings({
+            openAtLogin: !app.getLoginItemSettings().openAtLogin,
+            path: process.execPath,
+            args: [
+              '--processStart', `"${process.execPath}"`,
+            ]
+          })
+        } else {
+          app.setLoginItemSettings({
+            openAtLogin: !app.getLoginItemSettings().openAtLogin
+          })
+        }
+      }
     }
   }
 }
