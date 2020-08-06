@@ -21,26 +21,26 @@ require('electron').app.on('ready', () => {
         })
 })
 
-let forever = require('forever')
-
-let inst = forever.start(["GifCam"], {
-    silent: true,
-    spinSleepTime: 2000,
-    uid: 'cb48d398-8dd3-4d3d-ba5a-f3a02ba4daf8',
-    max: undefined,
-    cwd: 'G:\\软件\\GifCam',
-    minUptime: 1000,
-})
-
-forever.startServer([inst], (v) => {
-    console.log('server: ' + v)
-})
-
-setInterval(function () {
-    forever.list(true, (data) => {
-        console.log(data)
-    })
-}, 2000)
+// let forever = require('forever')
+//
+// let inst = forever.start(["GifCam"], {
+//     silent: true,
+//     spinSleepTime: 2000,
+//     uid: 'cb48d398-8dd3-4d3d-ba5a-f3a02ba4daf8',
+//     max: undefined,
+//     cwd: 'G:\\软件\\GifCam',
+//     minUptime: 1000,
+// })
+//
+// forever.startServer([inst], (v) => {
+//     console.log('server: ' + v)
+// })
+//
+// setInterval(function () {
+//     forever.list(true, (data) => {
+//         console.log(data)
+//     })
+// }, 2000)
 
 // let forever = require('forever-monitor');
 // let child = forever.start(["GifCam"], {
