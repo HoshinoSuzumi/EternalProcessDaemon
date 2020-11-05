@@ -4,6 +4,7 @@ English | [简体中文](README_zh.md)
 
 ![License](https://img.shields.io/github/license/boxlab/EternalProcessDaemon?style=flat-square)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/boxlab/EternalProcessDaemon?style=flat-square)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FHoshinoSuzumi%2FEternalProcessDaemon.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FHoshinoSuzumi%2FEternalProcessDaemon?ref=badge_shield)
 
 > :construction: Work in progress :construction:
 >
@@ -51,3 +52,6 @@ Check at [projects](https://github.com/boxlab/EternalProcessDaemon/projects).
 ### Change logs
 
 Not yet.
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FHoshinoSuzumi%2FEternalProcessDaemon.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FHoshinoSuzumi%2FEternalProcessDaemon?ref=badge_large)
